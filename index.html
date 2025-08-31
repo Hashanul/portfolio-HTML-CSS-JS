@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mehedi Hasan Tanvir — Portfolio</title>
+  <meta name="description" content="Personal portfolio website — dark neon grid theme with sections for skills, goals, projects, experience and contact."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH0Yb8q6Vxj1t7S8S3mLwXxJ0r1rV4k5n5q2vVqJM3rj5wJw6dK9qGz4k1oX8mYFqfQx1o2s8YvZ1n7H0kXQ/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --bg:#0b0b16;           /* main page background */
+      --panel:#111124;        /* card background */
+      --panel-2:#0f0f22;      /* darker card */
+      --muted:#a2a7c7;        /* muted text */
+      --text:#e7e7ff;         /* main text */
+      --accent:#b26bff;       /* purple */
+      --accent-2:#00e6ff;     /* cyan */
+      --accent-3:#ff4ecd;     /* pink */
+      --brand:#9d6cff;        /* brand purple */
+      --success:#4ade80;      /* green */
+      --warning:#f59e0b;      /* amber */
+      --danger:#ef4444;       /* red */
+      --radius:18px;
+      --glass:rgba(255,255,255,0.04);
+      --grid: radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0) 0 0/30px 30px,
+              radial-gradient(circle at 1px 1px, rgba(255,255,255,.04) 1px, transparent 0) 15px 15px/30px 30px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* glowing grid background */
+    .grid-bg::before{
+      content:""; position:fixed; inset:0; z-index:-3; background:var(--grid);
+      opacity:.35; filter: saturate(120%) contrast(110%);
+    }
+    .grid-bg::after{
+      content:""; position:fixed; inset:-30% -20% auto -20%; height:60vh; z-index:-2;
+      background: radial-gradient(60% 60% at 70% 40%, rgba(178,107,255,.35), transparent 60%),
+                  radial-gradient(50% 50% at 30% 60%, rgba(0,230,255,.25), transparent 60%),
+                  radial-gradient(40% 40% at 80% 80%, rgba(255,78,205,.2), transparent 60%);
+      filter: blur(40px) saturate(140%);
+      pointer-events:none;
+    }
+
+    a{color:var(--accent-2); text-decoration:none}
+    a:hover{opacity:.9}
+
+    /* container */
+    .container{width:min(1200px, 92%); margin-inline:auto}
+
+    /* NAVBAR */
+    .nav{
+      position:sticky; top:0; backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(12,12,24,.75), rgba(12,12,24,.55));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:1000;
+    }
+    .nav-inner{display:flex; align-items:center; gap:16px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-family:Outfit,Inter,sans-serif; font-weight:800; letter-spacing:.5px}
+    .brand .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg, var(--accent-2), var(--accent)); box-shadow:0 0 20px var(--accent)}
+    .nav-links{margin-left:auto; display:flex; gap:22px; align-items:center}
+    .nav-links a{color:var(--muted); font-weight:600; font-size:.95rem}
+    .nav-links a.active,.nav-links a:hover{color:var(--text)}
+    .cta{
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(178,107,255,.2), rgba(0,230,255,.18));
+      border:1px solid rgba(255,255,255,.1); color:var(--text); font-weight:700
+    }
+
+    /* HERO */
+    .hero{display:grid; grid-template-columns: 1.35fr .8fr; gap:28px; padding:60px 0 30px}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:var(--glass); border:1px solid rgba(255,255,255,.08); padding:6px 10px; border-radius:999px; color:var(--muted); font-weight:600}
+    .title{font-family:Outfit,Inter,sans-serif; font-weight:900; font-size:clamp(1.6rem, 3vw + .6rem, 3rem); letter-spacing:.5px}
+    .title .accent{color:var(--brand); text-shadow:0 0 20px rgba(157,108,255,.35)}
+    .lead{color:var(--muted); max-width:60ch}
+
+    .btn-row{display:flex; gap:12px; margin-top:18px}
+    .btn{padding:10px 14px; border:1px solid rgba(255,255,255,.12); border-radius:12px; font-weight:700; color:var(--text); background:var(--panel-2)}
+    .btn.pill{border-radius:999px}
+    .btn.primary{background:linear-gradient(135deg, rgba(178,107,255,.25), rgba(0,230,255,.25)); box-shadow:0 0 0 1px rgba(255,255,255,.06) inset}
+
+    .avatar-wrap{display:flex; justify-content:flex-end;}
+    .avatar{
+      --s: 220px;
+      width:var(--s); height:var(--s); border-radius:50%; background: url('https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
+      margin:10px; position:relative; border:3px solid rgba(255,255,255,.08);
+      box-shadow:0 0 0 10px rgba(178,107,255,.12), 0 0 45px rgba(178,107,255,.45), 0 0 90px rgba(0,230,255,.2);
+    }
+    .avatar::after{content:""; position:absolute; inset:-12px; border-radius:inherit; border:2px dashed rgba(255,255,255,.15)}
+
+    /* SECTION HEADERS */
+    section{padding:32px 0}
+    .section-title{font-family:Outfit,Inter,sans-serif; font-weight:800; font-size:clamp(1.4rem, 2vw + .65rem, 2rem); margin:8px 0 18px}
+
+    /* GRID LAYOUTS */
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    .grid.cols-4{grid-template-columns: repeat(4, 1fr)}
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr; align-items:center}
+      .avatar-wrap{justify-content:flex-start}
+      .grid.cols-3{grid-template-columns: 1fr 1fr}
+      .grid.cols-4{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid.cols-2,.grid.cols-3,.grid.cols-4{grid-template-columns: 1fr}
+    }
+
+    /* CARDS */
+    .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:18px; position:relative; overflow:hidden}
+    .card .sub{color:var(--muted); font-weight:700; letter-spacing:.3px; font-size:.9rem}
+    .card .tag{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(178,107,255,.16); border:1px solid rgba(178,107,255,.35); font-weight:700}
+    .card .badge{display:inline-flex; align-items:center; gap:6px; padding:5px 9px; font-size:.8rem; border-radius:10px; background:rgba(0,230,255,.14); border:1px solid rgba(0,230,255,.35)}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:10px 0}
+
+    /* SKILLS */
+    .skills-wrap{display:grid; grid-template-columns:2fr 1fr; gap:18px}
+    @media (max-width: 980px){.skills-wrap{grid-template-columns:1fr}}
+
+    .skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:12px; font-weight:600}
+
+    /* PROJECTS */
+    .project-card{display:grid; grid-template-rows: 180px auto; gap:12px}
+    .project-img{border-radius:12px; background:linear-gradient(135deg, rgba(178,107,255,.25), rgba(0,230,255,.25)); border:1px solid rgba(255,255,255,.1); position:relative; overflow:hidden}
+    .project-img img{width:100%; height:100%; object-fit:cover; filter:saturate(110%)}
+    .project-tech{display:flex; gap:8px; flex-wrap:wrap}
+    .actions{display:flex; gap:10px}
+
+    /* EXPERIENCE */
+    .xp-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    @media (max-width: 980px){.xp-grid{grid-template-columns:1fr}}
+
+    /* FOOTER */
+    footer{padding:50px 0 80px; text-align:center}
+    .foot-cta{font-family:Outfit,Inter,sans-serif; font-weight:900; font-size:clamp(1.4rem, 2vw + .7rem, 2.2rem)}
+    .email-box{display:inline-flex; align-items:center; gap:10px; margin-top:18px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); border-radius:999px; padding:8px}
+    .email-box input{border:none; outline:none; background:transparent; color:var(--text); padding:10px 12px; min-width:260px}
+    .email-box button{border:none; border-radius:999px; padding:10px 14px; font-weight:800; color:var(--text); background:linear-gradient(135deg, rgba(178,107,255,.25), rgba(0,230,255,.25))}
+
+    /* UTIL */
+    .muted{color:var(--muted)}
+    .tiny{font-size:.86rem}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+
+    /* simple reveal */
+    .reveal{opacity:0; transform:translateY(10px); transition: all .6s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* floating quick access */
+    .fab-wrap{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:10px; z-index:999}
+    .fab{width:44px; height:44px; display:grid; place-items:center; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04)}
+    .fab:hover{transform:translateY(-1px)}
+  </style>
+</head>
+<body class="grid-bg">
+  <!-- NAVBAR -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span><span>mhthe1</span></div>
+      <div class="nav-links">
+        <a href="#about" class="active">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#philosophies">Philosophies</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#quick">Quick Access <i class="fa-solid fa-bolt"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="container hero" id="about">
+    <div>
+      <span class="chip"><i class="fa-regular fa-hand"></i> Hi There!</span>
+      <h1 class="title">I'm <span class="accent">Mehedi Hasan Tanvir</span></h1>
+      <p class="lead">Passionate developer with a love for creating innovative solutions. With a background in both frontend and backend technologies, I strive to craft seamless, user‑centric applications that make a difference.</p>
+      <div class="btn-row">
+        <a class="btn pill primary" href="mailto:mehedihtanvir@gmail.com"><i class="fa-regular fa-paper-plane"></i> Email Me</a>
+        <a class="btn pill" href="https://github.com/" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <figure class="avatar" aria-label="Profile photo"></figure>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="container">
+    <h2 class="section-title">Intro to <span class="accent">MHThe1</span></h2>
+    <div class="skills-wrap">
+      <!-- SKILLS LEFT -->
+      <div class="card">
+        <div class="grid cols-2">
+          <div>
+            <div class="sub">Languages</div>
+            <div class="divider"></div>
+            <div class="pill">🐍 Python</div>
+            <div class="pill">⚙️ C++</div>
+            <div class="pill">🟨 JavaScript</div>
+            <div class="pill">☕ Java</div>
+            <div class="pill">🌀 TypeScript</div>
+          </div>
+          <div>
+            <div class="sub">App Development</div>
+            <div class="divider"></div>
+            <div class="pill">📱 Kotlin</div>
+            <div class="pill">🧩 Jetpack Compose</div>
+            <div class="pill">🧪 Material UI</div>
+            <div class="pill">🔁 Multiplatform</div>
+          </div>
+          <div>
+            <div class="sub">Backend</div>
+            <div class="divider"></div>
+            <div class="pill">🌿 Django</div>
+            <div class="pill">🧪 Django REST</div>
+            <div class="pill">🔥 Flask</div>
+            <div class="pill">🚂 Express</div>
+            <div class="pill">🟢 Node.js</div>
+          </div>
+          <div>
+            <div class="sub">Frontend</div>
+            <div class="divider"></div>
+            <div class="pill">⚛️ React</div>
+            <div class="pill">✨ TailwindCSS</div>
+            <div class="pill">⏭️ Next.js</div>
+            <div class="pill">🎞️ Framer Motion</div>
+            <div class="pill">🔶 HTML5</div>
+            <div class="pill">🔷 CSS3</div>
+          </div>
+          <div>
+            <div class="sub">Databases</div>
+            <div class="divider"></div>
+            <div class="pill">🟢 MySQL</div>
+            <div class="pill">🟣 PostgreSQL</div>
+            <div class="pill">🟩 MongoDB</div>
+          </div>
+          <div>
+            <div class="sub">Tools</div>
+            <div class="divider"></div>
+            <div class="pill">🧰 VS Code</div>
+            <div class="pill">▲ Vercel</div>
+            <div class="pill">🐙 GitHub</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOALS / FOCUS RIGHT -->
+      <div class="grid">
+        <div class="card">
+          <div class="sub">Goals</div>
+          <ul class="tiny">
+            <li>Master full‑stack development</li>
+            <li>Master app development</li>
+            <li>Contribute to open‑source projects</li>
+            <li>Build scalable, user‑centric applications</li>
+            <li>Explore AI and machine learning</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="sub">Current Focus</div>
+          <p class="tiny muted">Exploring the world of Machine Vision and AI. Diving deep into serverless architectures and the potential of edge computing to create faster, more efficient web applications. Experimenting with new UI/UX paradigms to enhance engagement and accessibility across all devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="container" id="projects">
+    <h2 class="section-title">Recent <span class="accent">Projects</span></h2>
+    <div class="grid cols-3">
+      <!-- Project 1 -->
+      <article class="card project-card reveal">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="App screens"/>
+        </div>
+        <div>
+          <h3>CampVoiceUs</h3>
+          <p class="tiny muted">Amplifying campus voices, building connections. Built with MERN stack for web and Kotlin with Jetpack Compose for Android.</p>
+          <div class="project-tech">
+            <span class="badge"><i class="fa-brands fa-react"></i> React</span>
+            <span class="badge"><i class="fa-brands fa-node"></i> Node</span>
+            <span class="badge">MongoDB</span>
+          </div>
+          <div class="actions">
+            <a class="btn pill" href="#" target="_blank">View GitHub Repo</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project 2 -->
+      <article class="card project-card reveal">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=1200&auto=format&fit=crop" alt="Dashboard"/>
+        </div>
+        <div>
+          <h3>Automate‑Routine for BRACU Students</h3>
+          <p class="tiny muted">Pre‑registration is a mess, so I built a tool to get the perfect combination of course sections. React.js frontend and Django REST API backend.</p>
+          <div class="project-tech">
+            <span class="badge">Django REST</span>
+            <span class="badge"><i class="fa-brands fa-react"></i> React</span>
+            <span class="badge">PostgreSQL</span>
+          </div>
+          <div class="actions">
+            <a class="btn pill" href="#" target="_blank">Visit Live Site</a>
+          </div>
+        </div>
+      </article>
+      <!-- Project 3 -->
+      <article class="card project-card reveal">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="Quiz app"/>
+        </div>
+        <div>
+          <h3>The Quizzer — Sitcom Quiz App</h3>
+          <p class="tiny muted">Simple yet elegant quiz app for sitcom fans. Built with React.js.</p>
+          <div class="project-tech">
+            <span class="badge"><i class="fa-brands fa-react"></i> React</span>
+            <span class="badge">Framer Motion</span>
+          </div>
+          <div class="actions">
+            <a class="btn pill" href="#" target="_blank">Visit Live Site</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="container" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="xp-grid">
+      <div class="card">
+        <h3>Frontend Development</h3>
+        <p class="tiny muted">Started my frontend journey recently with ReactJS, and catching up super quick!</p>
+      </div>
+      <div class="card">
+        <h3>Backend Development</h3>
+        <p class="tiny muted">I've been working with Flask, Django, REST APIs for the past 3 years and recently I've started using Next.js as well.</p>
+      </div>
+      <div class="card">
+        <h3>Competitive Programming</h3>
+        <p class="tiny muted">I sometimes dive into the world of competitive programming and solve problems in C++ and sometimes Python.</p>
+      </div>
+      <div class="card">
+        <h3>An early bird</h3>
+        <p class="tiny muted">I have been in the web design space since 2015, while still in high school. Back then I used to design websites in Wapka.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <p class="foot-cta">Ready to take <span class="accent">your</span> digital presence to the next level?</p>
+      <p class="muted tiny">Reach out to me today and let's discuss how I can help you achieve your goals. (I'm also available for hire)</p>
+      <form class="email-box" onsubmit="copyEmail(event)">
+        <label class="sr" for="email">Email</label>
+        <input id="email" value="mehedihtanvir@gmail.com" readonly>
+        <button type="submit"><i class="fa-regular fa-copy"></i> Copy</button>
+      </form>
+      <div class="btn-row" style="justify-content:center; margin-top:22px">
+        <a class="fab" aria-label="LinkedIn" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a class="fab" aria-label="GitHub" href="#"><i class="fa-brands fa-github"></i></a>
+        <a class="fab" aria-label="Twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a class="fab" aria-label="Instagram" href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <p class="tiny muted" style="margin-top:22px">Copyright © <span id="year"></span> Mehedi H Tanvir</p>
+    </div>
+  </footer>
+
+  <!-- Quick floating buttons -->
+  <div class="fab-wrap" id="quick">
+    <a class="fab" href="#projects" title="Projects"><i class="fa-regular fa-window-restore"></i></a>
+    <a class="fab" href="#experience" title="Experience"><i class="fa-regular fa-star"></i></a>
+    <a class="fab" href="#contact" title="Contact"><i class="fa-regular fa-envelope"></i></a>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // copy email interaction
+    function copyEmail(e){
+      e.preventDefault();
+      const email = document.getElementById('email');
+      navigator.clipboard.writeText(email.value).then(()=>{
+        const btn = e.target.querySelector('button');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        setTimeout(()=> btn.innerHTML = original , 1400);
+      });
+    }
+
+    // simple reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+      })
+    },{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // highlight nav link on scroll
+    const sections = [...document.querySelectorAll('section, header')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const id = entry.target.getAttribute('id');
+        if(entry.isIntersecting && id){
+          links.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      })
+    }, {threshold:.25});
+    sections.forEach(s=> spy.observe(s));
+  </script>
+</body>
+</html>
