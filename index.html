@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mehedi Hasan Tanvir — Portfolio</title>
+  <title>Hashanul Banna — Portfolio</title>
   <meta name="description" content="Personal portfolio website — dark neon grid theme with sections for skills, goals, projects, experience and contact."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,14 +127,16 @@
     .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); margin:10px 0}
 
     /* SKILLS */
-    .skills-wrap{display:grid; grid-template-columns:2fr 1fr; gap:18px}
+    .skills-wrap{display:grid; grid-template-columns:2fr 1fr; gap:10px;}
     @media (max-width: 980px){.skills-wrap{grid-template-columns:1fr}}
 
     .skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
     .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:12px; font-weight:600}
 
     .icon{height: 25px; width: 25px;}
-
+    .skills{background: #1b1b1bc2; border-radius: 8px;}
+    .skill{margin: 1.4rem; color: #b26bff; }
+    
     /* PROJECTS */
     .project-card{display:grid; grid-template-rows: 180px auto; gap:12px}
     .project-img{border-radius:12px; background:linear-gradient(135deg, rgba(178,107,255,.25), rgba(0,230,255,.25)); border:1px solid rgba(255,255,255,.1); position:relative; overflow:hidden}
@@ -206,45 +208,51 @@
     <h2 class="section-title">Intro to<span class="accent"> Hashanul Banna </span></h2>
     <div class="skills-wrap">
       <!-- SKILLS LEFT -->
+      
       <div class="card">
-        <div class="grid cols-2">
-          <div>
-            <div class="sub">Languages</div>
-            <div class="divider"></div>
-            <div class="pill"><img class="icon" src="midea/python.svg" alt=""> Python</div> <br>
-            <div class="pill"><img class="icon" src="midea/javascript.svg" alt=""> JavaScript</div>
+          <div class="skills"><h2 class="skill">Skills</h2></div>          
+          <div class="card">
+            <div class="grid cols-2">  
+                <div>
+                  <div class="sub">Languages</div>
+                  <div class="divider"></div>
+                  <div class="pill"><img class="icon" src="midea/python.svg" alt=""> Python</div>
+                  <div class="pill"><img class="icon" src="midea/javascript.svg" alt=""> JavaScript</div>
+                </div>
+              
+              <div>
+                <div class="sub">Backend</div>
+                <div class="divider"></div>
+                <div class="pill"><img class="icon" src="midea/django.svg" alt=""> Django</div>
+                <div class="pill"><img class="icon" src="midea/django-rest.svg" alt=""> Django REST</div>
+              </div>
+              
+              <div>
+                <div class="sub">Frontend</div>
+                <div class="divider"></div>
+                <div class="pill"><img class="icon" src="midea/react.svg" alt="react"> React</div> 
+                <div class="pill"><img class="icon" src="midea/html-5.svg" alt="html"> HTML5</div>
+                <div class="pill"><img class="icon" src="midea/css-3.svg" alt="css"> CSS3</div>
+                <div class="pill"><img class="icon" src="midea/tailwindcss.svg" alt="tailwindcss"> TailwindCSS</div>
+                <div class="pill"><img class="icon" src="midea/bootstrap.svg" alt="bootstrap"> Bootstrap5</div>
+              </div>
+              <div>
+                <div class="sub">Databases</div>
+                <div class="divider"></div>
+                <div class="pill"><img class="icon" src="midea/mysql.svg" alt="mysql"> MySQL</div>
+              </div>
+              <div>
+                <div class="sub">Tools</div>
+                <div class="divider"></div>
+                <div class="pill"><img class="icon" src="midea/visual-studio-code.svg" alt="vs code"> VS Code</div>
+                <div class="pill"><img class="icon" src="midea/pycharm.svg" alt="PyCharm"> PyCharm</div>
+                <div class="pill"><img class="icon" src="midea/github.svg" alt="GitHub"> GitHub</div>
+              </div>
+            </div>
           </div>
-       
-          <div>
-            <div class="sub">Backend</div>
-            <div class="divider"></div>
-            <div class="pill"><img class="icon" src="midea/django.svg" alt=""> Django</div> <br>
-            <div class="pill"><img class="icon" src="midea/django-rest.svg" alt=""> Django REST</div>
-          </div>
-          <div>
-            <div class="sub">Frontend</div>
-            <div class="divider"></div>
-            <div class="pill"><img class="icon" src="midea/react.svg" alt="react"> React</div> 
-            <div class="pill"><img class="icon" src="midea/html-5.svg" alt="html"> HTML5</div>
-            <div class="pill"><img class="icon" src="midea/css-3.svg" alt="css"> CSS3</div>
-            <div class="pill"><img class="icon" src="midea/tailwindcss.svg" alt="tailwindcss"> TailwindCSS</div>
-            <div class="pill"><img class="icon" src="midea/bootstrap.svg" alt="bootstrap"> Bootstrap5</div>
-          </div>
-          <div>
-            <div class="sub">Databases</div>
-            <div class="divider"></div>
-            <div class="pill"><img class="icon" src="midea/mysql.svg" alt="mysql"> MySQL</div>
-          </div>
-          <div>
-            <div class="sub">Tools</div>
-            <div class="divider"></div>
-            <div class="pill"><img class="icon" src="midea/visual-studio-code.svg" alt="vs code"> VS Code</div>
-            <div class="pill"><img class="icon" src="midea/pycharm.svg" alt="PyCharm"> PyCharm</div>
-            <div class="pill"><img class="icon" src="midea/github.svg" alt="GitHub"> GitHub</div>
-          </div>
-        </div>
       </div>
-
+      
+      
       <!-- GOALS / FOCUS RIGHT -->
       <div class="grid">
         <div class="card">
@@ -335,15 +343,15 @@
       </div>
       <div class="card">
         <h3>Backend Development</h3>
-        <p class="tiny muted">I've been working with Flask, Django, REST APIs for the past 3 years and recently I've started using Next.js as well.</p>
+        <p class="tiny muted">I've been working with Django, REST APIs for the past 1 years and recently I've started using Next.js as well.</p>
       </div>
       <div class="card">
         <h3>Competitive Programming</h3>
-        <p class="tiny muted">I sometimes dive into the world of competitive programming and solve problems in C++ and sometimes Python.</p>
+        <p class="tiny muted">I sometimes dive into the world of competitive programming and solve problems in Python.</p>
       </div>
       <div class="card">
-        <h3>An early bird</h3>
-        <p class="tiny muted">I have been in the web design space since 2015, while still in high school. Back then I used to design websites in Wapka.</p>
+        <h3>Career Objective</h3>
+        <p class="tiny muted">To begin my career as a Python Developer where I can leverage my knowledge of Python, Django/Flask, and database management to contribute to innovative projects while continuously learning and growing in a dynamic software development environment.</p>
       </div>
     </div>
   </section>
@@ -355,21 +363,23 @@
       <p class="muted tiny">Reach out to me today and let's discuss how I can help you achieve your goals. (I'm also available for hire)</p>
       <form class="email-box" onsubmit="copyEmail(event)">
         <label class="sr" for="email">Email</label>
-        <input id="email" value="mehedihtanvir@gmail.com" readonly>
+        <input id="email" value="hashanulbanna4492@gmail.com" readonly>
         <button type="submit"><i class="fa-regular fa-copy"></i> Copy</button>
       </form>
       <div class="btn-row" style="justify-content:center; margin-top:22px">
-        <a class="fab" aria-label="LinkedIn" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a class="fab" aria-label="GitHub" href="#"><i class="fa-brands fa-github"></i></a>
-        <a class="fab" aria-label="Twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a>
-        <a class="fab" aria-label="Instagram" href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a class="" href="https://www.linkedin.com/in/hashanulbanna1/" target="_blank"><img src="midea/linkedin.svg" alt="LinkedIn"></a>
+        <a class="" href="https://github.com/Hashanul" target="_blank"><img src="midea/github.svg" alt="GitHub"></a>
+        <a class="" href="https://www.facebook.com/hashanul.banna.1" target="_blank"><img src="midea/facebook.svg" alt="Facebook"></a>
+        <a class="" href="https://www.instagram.com/hashanulbanna/" target="_blank"><img src="midea/instagram.svg" alt="Instagram"></a>
+        <a class="" href="https://x.com/HashanulBanna1" target="_blank"><img src="midea/twitter.svg" alt="Twitter"></a>
       </div>
-      <p class="tiny muted" style="margin-top:22px">Copyright © <span id="year"></span> Mehedi H Tanvir</p>
+      <p class="tiny muted" style="margin-top:22px">Copyright © <span id="year"></span> Hashanul Banna</p>
     </div>
   </footer>
 
   <!-- Quick floating buttons -->
   <div class="fab-wrap" id="quick">
+    <a class="fab" href="#projects" title="Projects"><i class="fa-regular fa-window-restore"></i></a>
     <a class="fab" href="#projects" title="Projects"><i class="fa-regular fa-window-restore"></i></a>
     <a class="fab" href="#experience" title="Experience"><i class="fa-regular fa-star"></i></a>
     <a class="fab" href="#contact" title="Contact"><i class="fa-regular fa-envelope"></i></a>
