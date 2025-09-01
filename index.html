@@ -94,7 +94,7 @@
     .avatar-wrap{display:flex; justify-content:flex-end;}
     .avatar{
       --s: 220px;
-      width:var(--s); height:var(--s); border-radius:50%; background: url('https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
+      width:var(--s); height:var(--s); border-radius:50%; background: url('hashanul.jpg') center/108% no-repeat;
       margin:10px; position:relative; border:3px solid rgba(255,255,255,.08);
       box-shadow:0 0 0 10px rgba(178,107,255,.12), 0 0 45px rgba(178,107,255,.45), 0 0 90px rgba(0,230,255,.2);
     }
@@ -133,6 +133,8 @@
     .skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
     .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:12px; font-weight:600}
 
+    .icon{height: 25px; width: 25px;}
+
     /* PROJECTS */
     .project-card{display:grid; grid-template-rows: 180px auto; gap:12px}
     .project-img{border-radius:12px; background:linear-gradient(135deg, rgba(178,107,255,.25), rgba(0,230,255,.25)); border:1px solid rgba(255,255,255,.1); position:relative; overflow:hidden}
@@ -170,11 +172,11 @@
   <!-- NAVBAR -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="container nav-inner">
-      <div class="brand"><span class="dot"></span><span>mhthe1</span></div>
+      <div class="brand"><span class="dot"></span><span>Hashanul Banna</span></div>
       <div class="nav-links">
         <a href="#about" class="active">About</a>
         <a href="#projects">Projects</a>
-        <a href="#philosophies">Philosophies</a>
+        
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
         <a class="cta" href="#quick">Quick Access <i class="fa-solid fa-bolt"></i></a>
@@ -186,11 +188,12 @@
   <header class="container hero" id="about">
     <div>
       <span class="chip"><i class="fa-regular fa-hand"></i> Hi There!</span>
-      <h1 class="title">I'm <span class="accent">Mehedi Hasan Tanvir</span></h1>
+      <h1 class="title">I'm <span class="accent">Md Hashanul Banna</span></h1>
+      <h2 class="lead">Full Stack Developer(Python, Django & React)</h2>
       <p class="lead">Passionate developer with a love for creating innovative solutions. With a background in both frontend and backend technologies, I strive to craft seamless, user‑centric applications that make a difference.</p>
       <div class="btn-row">
-        <a class="btn pill primary" href="mailto:mehedihtanvir@gmail.com"><i class="fa-regular fa-paper-plane"></i> Email Me</a>
-        <a class="btn pill" href="https://github.com/" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="btn pill primary" href="mailto:hashanulbanna4492@gmail.com"><i class="fa-regular fa-paper-plane"></i> Email Me</a>
+        <a class="btn pill" href="https://github.com/Hashanul/" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github"></i> GitHub</a>
       </div>
     </div>
     <div class="avatar-wrap">
@@ -200,7 +203,7 @@
 
   <!-- INTRO -->
   <section class="container">
-    <h2 class="section-title">Intro to <span class="accent">MHThe1</span></h2>
+    <h2 class="section-title">Intro to<span class="accent"> Hashanul Banna </span></h2>
     <div class="skills-wrap">
       <!-- SKILLS LEFT -->
       <div class="card">
@@ -208,52 +211,36 @@
           <div>
             <div class="sub">Languages</div>
             <div class="divider"></div>
-            <div class="pill">🐍 Python</div>
-            <div class="pill">⚙️ C++</div>
-            <div class="pill">🟨 JavaScript</div>
-            <div class="pill">☕ Java</div>
-            <div class="pill">🌀 TypeScript</div>
+            <div class="pill"><img class="icon" src="midea/python.svg" alt=""> Python</div> <br>
+            <div class="pill"><img class="icon" src="midea/javascript.svg" alt=""> JavaScript</div>
           </div>
-          <div>
-            <div class="sub">App Development</div>
-            <div class="divider"></div>
-            <div class="pill">📱 Kotlin</div>
-            <div class="pill">🧩 Jetpack Compose</div>
-            <div class="pill">🧪 Material UI</div>
-            <div class="pill">🔁 Multiplatform</div>
-          </div>
+       
           <div>
             <div class="sub">Backend</div>
             <div class="divider"></div>
-            <div class="pill">🌿 Django</div>
-            <div class="pill">🧪 Django REST</div>
-            <div class="pill">🔥 Flask</div>
-            <div class="pill">🚂 Express</div>
-            <div class="pill">🟢 Node.js</div>
+            <div class="pill"><img class="icon" src="midea/django.svg" alt=""> Django</div> <br>
+            <div class="pill"><img class="icon" src="midea/django-rest.svg" alt=""> Django REST</div>
           </div>
           <div>
             <div class="sub">Frontend</div>
             <div class="divider"></div>
-            <div class="pill">⚛️ React</div>
-            <div class="pill">✨ TailwindCSS</div>
-            <div class="pill">⏭️ Next.js</div>
-            <div class="pill">🎞️ Framer Motion</div>
-            <div class="pill">🔶 HTML5</div>
-            <div class="pill">🔷 CSS3</div>
+            <div class="pill"><img class="icon" src="midea/react.svg" alt="react"> React</div> 
+            <div class="pill"><img class="icon" src="midea/html-5.svg" alt="html"> HTML5</div>
+            <div class="pill"><img class="icon" src="midea/css-3.svg" alt="css"> CSS3</div>
+            <div class="pill"><img class="icon" src="midea/tailwindcss.svg" alt="tailwindcss"> TailwindCSS</div>
+            <div class="pill"><img class="icon" src="midea/bootstrap.svg" alt="bootstrap"> Bootstrap5</div>
           </div>
           <div>
             <div class="sub">Databases</div>
             <div class="divider"></div>
-            <div class="pill">🟢 MySQL</div>
-            <div class="pill">🟣 PostgreSQL</div>
-            <div class="pill">🟩 MongoDB</div>
+            <div class="pill"><img class="icon" src="midea/mysql.svg" alt="mysql"> MySQL</div>
           </div>
           <div>
             <div class="sub">Tools</div>
             <div class="divider"></div>
-            <div class="pill">🧰 VS Code</div>
-            <div class="pill">▲ Vercel</div>
-            <div class="pill">🐙 GitHub</div>
+            <div class="pill"><img class="icon" src="midea/visual-studio-code.svg" alt="vs code"> VS Code</div>
+            <div class="pill"><img class="icon" src="midea/pycharm.svg" alt="PyCharm"> PyCharm</div>
+            <div class="pill"><img class="icon" src="midea/github.svg" alt="GitHub"> GitHub</div>
           </div>
         </div>
       </div>
